@@ -41,5 +41,6 @@ fun TaskItemScreen() {
 @Preview(showBackground = true)
 @Composable
 fun TaskItemPreview() {
-    // TODO: Call TaskItemScreen
+TaskItemScreen()
+}
 }
