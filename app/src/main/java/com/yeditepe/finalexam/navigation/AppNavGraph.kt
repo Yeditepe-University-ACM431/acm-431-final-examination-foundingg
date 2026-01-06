@@ -6,16 +6,22 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun AppNavGraph() {
-
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
         startDestination = "tasks"
     ) {
+        composable("tasks") {
+            TaskListScreen()
+        }
 
-        // TODO 1: Add composable for "tasks"
-
-        // TODO 2: Add composable for "taskDetail/{title}"
+        composable(
+            route = "taskDetail/{title}",
+            arguments = listOf(navArgument("title") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val title = backStackEntry.arguments?.getString("title") ?: ""
+            TaskDetailScreen(title)
+        }
     }
 }
