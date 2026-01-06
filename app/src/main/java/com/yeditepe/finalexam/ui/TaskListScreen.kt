@@ -12,12 +12,14 @@ import com.yeditepe.finalexam.viewmodel.TaskViewModel
 
 @Composable
 fun TaskListScreen(viewModel: TaskViewModel = viewModel()) {
-
-    // TODO 3: Read task list from ViewModel
+val taskList = viewModel.tasks
+    
 
     Column {
-        // TODO 4: Display task titles and completion status
-        // Use a simple Column or LazyColumn
+        taskList.forEach { task ->
+            Text(
+                text = "${task.title} - ${if (task.isCompleted) "Completed" else "Not Completed"}"
+            )
     }
 }
 
